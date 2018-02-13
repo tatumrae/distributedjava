@@ -4,7 +4,7 @@
     Author     : tatum
 --%>
 
-<%@page import="java.util.List"%>
+<%--<%@page import="java.util.List"%>--%>
 <%@page import="edu.wctc.dj.storefront.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,19 +62,13 @@
                 </div>
             </div>
         </nav>
+        <% 
+            Product product = (Product) request.getAttribute("product");
+        %>
         
-        
-        
-        <%
-                List<Product> productList = (List<Product>) request.getAttribute("productList");
-                for (Product product : productList) {
-            %> 
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading"><%= product.getName()%></h1>
-                <%
-                }
-            %>
+                <h1 class="jumbotron-heading"><%= product.getName() %></h1>
                 <!--<p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500...</p>-->
             </div>
         </section>
