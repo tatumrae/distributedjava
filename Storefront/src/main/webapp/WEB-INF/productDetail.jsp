@@ -11,7 +11,7 @@
 <html>
     <head>
         <title>Succulent Center | The Source for Succulents</title>
-<jsp:include page="header.html"/>
+<jsp:include page="/header.html"/>
         
         <section class="jumbotron text-center">
             <div class="container">

@@ -78,13 +78,13 @@ public class ShoppingCartController extends HttpServlet {
             request.setAttribute("cartItems", cartItems);
             request.setAttribute("shipping", 6.95);
             request.setAttribute("totalCost", totalCost);
-            dispatcher = request.getRequestDispatcher("/cart.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/cart.jsp");
         } else {
             List<LineItem> cartItems = shoppingCart.getCartItems();
             request.setAttribute("cart", cartItems);
             request.setAttribute("shipping", 0);
             request.setAttribute("totalCost", 0);
-            dispatcher = request.getRequestDispatcher("/cart.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/cart.jsp");
         }
         dispatcher.forward(request, response);
     }
