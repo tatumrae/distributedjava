@@ -5,51 +5,28 @@ package edu.wctc.dj.storefront.model;
  * @author Tatum Thomas
  */
 public class LineItem {
-    private ProductService productService;
+
     private Product product;
-    private int quantity;
-    private double totalCost;
+    private int qty;
 
-    public LineItem(ProductService productService, String productId, int quantity) {
-        setProductService(productService);
-        setProduct(findProduct(productId));
-        setQuantity(quantity);
+    public LineItem(Product product, int qty) {
+        setProduct(product);
+        setQty(qty);
     }
 
-    public Product findProduct(String productId) {
-        return productService.getProduct(productId);
+    public Product getProduct() {
+        return product;
     }
 
-    public final void setProduct(final Product product) {
-        if(product == null) {
-            throw new IllegalArgumentException("product not found");
-        }
+    public void setProduct(Product product) {
         this.product = product;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQty() {
+        return qty;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
-
-    public final double getTotalCost() {
-        return quantity * product.getPrice();
-    }
-
-    public void setTotalCost(double totalCost) {
-        this.totalCost = totalCost;
-    }
-
-    public final ProductService getProductService() {
-        return productService;
-    }
-
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
-
-
 }

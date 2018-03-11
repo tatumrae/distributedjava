@@ -5,8 +5,13 @@
  */
 package edu.wctc.dj.storefront.controller;
 
+import edu.wctc.dj.storefront.model.LineItem;
+import edu.wctc.dj.storefront.model.ProductService;
+import edu.wctc.dj.storefront.model.ShoppingCart;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +61,32 @@ public class ShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        ShoppingCart shoppingCart = new ShoppingCart("1234");
+        ProductService productService = new ProductService();
+        
+        RequestDispatcher dispatcher = null;
+        
+//        shoppingCart.addLineItem(productService.getProduct("001"), 1);
+//        shoppingCart.addLineItem(productService.getProduct("004"), 5);
+        
+        String cart = request.getParameter("cart");
+        
+        if (cart != null) {
+            List<LineItem> cartItems = shoppingCart.getCartItems();
+            double totalCost = shoppingCart.getCartTotal();
+            request.setAttribute("cartItems", cartItems);
+            request.setAttribute("shipping", 6.95);
+            request.setAttribute("totalCost", totalCost);
+            dispatcher = request.getRequestDispatcher("/cart.jsp");
+        } else {
+            List<LineItem> cartItems = shoppingCart.getCartItems();
+            request.setAttribute("cart", cartItems);
+            request.setAttribute("shipping", 0);
+            request.setAttribute("totalCost", 0);
+            dispatcher = request.getRequestDispatcher("/cart.jsp");
+        }
+        dispatcher.forward(request, response);
     }
 
     /**

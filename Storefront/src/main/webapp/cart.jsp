@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,60 +28,41 @@
                                 <tr>
                                     <th scope="col"> </th>
                                     <th scope="col">Product</th>
-                                    <th scope="col">Available</th>
                                     <th scope="col" class="text-center">Quantity</th>
                                     <th scope="col" class="text-right">Price</th>
-                                    <th> </th>
+                                    <th scope="col" class="text-right">Total Cost</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach var="lineItem" items="${cartItems}">
                                 <tr>
-                                    <td><img src="images/black_prince_50_50.jpg" /> </td>
-                                    <td>Echeveria "Black Prince"</td>
-                                    <td>In stock</td>
-                                    <td><input class="form-control" type="text" value="1" /></td>
-                                    <td class="text-right">$2.40</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                    <td><img src="${lineItem.product.imageURL}" width="50px"/> </td>
+                                    <td>${lineItem.product.name}</td>
+                                    <td>${lineItem.qty}</td>
+                                    <td class="text-right"><fmt:formatNumber value= "${lineItem.product.price}" type = "currency"/></td>
+                                    <td class="text-right"><fmt:formatNumber value= "${lineItem.qty * lineItem.product.price}" type = "currency"/></td>
                                 </tr>
+                                </c:forEach>
                                 <tr>
-                                    <td><img src="images/panda_ear_50_50.jpg" /> </td>
-                                    <td>Panda Ear</td>
-                                    <td>In stock</td>
-                                    <td><input class="form-control" type="text" value="1" /></td>
-                                    <td class="text-right">$13.00</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="images/string_of_pearls_50_50.jpg" /> </td>
-                                    <td>String of Pearls</td>
-                                    <td>In stock</td>
-                                    <td><input class="form-control" type="text" value="1" /></td>
-                                    <td class="text-right">$1.90</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">Sub-Total</td>
+                                    <td class="text-right"><fmt:formatNumber value="${totalCost}" type="currency"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td>Sub-Total</td>
-                                    <td class="text-right">$17.30</td>
+                                    <td class="text-right">Shipping</td>
+                                    <td class="text-right"><fmt:formatNumber value= "${shipping}" type="currency"/></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td>Shipping</td>
-                                    <td class="text-right">$6.95</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><strong>Total</strong></td>
-                                    <td class="text-right"><strong>$24.25</strong></td>
+                                    <td class="text-right"><strong>Total</strong></td>
+                                    <td class="text-right"><strong><fmt:formatNumber value= "${totalCost + shipping}" type = "currency"/></strong></td>
                                 </tr>
                             </tbody>
                         </table>
