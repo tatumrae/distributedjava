@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <ui:include src="header.xhtml" />
         <title>Succulent Center | The Source for Succulents</title>
@@ -61,6 +62,10 @@
             src="images/Donkey_Tail_600_400.jpg" alt='Donkey "Burros" Tail' />
             <div class="card-body">
               <h4 class="card-title text-center">
+<!--                  <c:set var="product" value="001"/>
+                <h:form>
+                    <h:commandLink value = "Donkey 'Burros' Tail" action ="#{productBean.showProductDetail(product)}"/>
+                </h:form>-->
                 <a href="productDetail.jsp" title="View Product">Donkey
                 "Burros" Tail</a>
               </h4>

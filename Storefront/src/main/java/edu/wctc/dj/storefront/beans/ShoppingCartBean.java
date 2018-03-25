@@ -7,21 +7,26 @@ package edu.wctc.dj.storefront.beans;
 
 import edu.wctc.dj.storefront.model.LineItem;
 import edu.wctc.dj.storefront.model.ProductService;
+import edu.wctc.dj.storefront.model.ShoppingCart;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author tatum
  */
 @Named(value = "shoppingCartBean")
-@Dependent
-public class ShoppingCartBean {
+@SessionScoped
+public class ShoppingCartBean implements Serializable {
     
     ProductService productService = new ProductService();
-    private double cartTotal = 0;
+    ShoppingCart shoppingCart = new ShoppingCart();
+    private double shippingCost = 0;
     
     private String cartId;
     private List<LineItem> cartItems = Arrays.asList(
@@ -29,13 +34,21 @@ public class ShoppingCartBean {
             new LineItem(productService.getProduct("006"), 2),
             new LineItem(productService.getProduct("002"), 1)
     );
-
-    public double getCartTotal() {
-        return cartTotal;
+    @PostConstruct
+    public void getCartTotals() {
+        shoppingCart.calcCartTotals(cartItems);
+    }
+    
+    public double getCartSubTotal() {
+        return shoppingCart.getCartSubTotal();
+    }
+    
+    public double getShippingCost() {
+        return shoppingCart.getShippingCost();
     }
 
-    public void setCartTotal(double cartTotal) {
-        this.cartTotal = cartTotal;
+    public double getCartTotal() {
+        return shoppingCart.getCartTotal();
     }
 
     public String getCartId() {
@@ -52,9 +65,7 @@ public class ShoppingCartBean {
 
     public void setCartItems(List<LineItem> cartItems) {
         this.cartItems = cartItems;
-    }
-    
-    
+    }   
 
     /**
      * Creates a new instance of ShoppingCartBean

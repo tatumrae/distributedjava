@@ -53,17 +53,19 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="row" id="productsContainer">
+                    <div class="row">
                         <ui:repeat value="#{productBean.productList}" var="product" varStatus="loop">
-                            
-                            <div class="col-12 col-md-6 col-lg-4">
+                            <div class="col-12 col-md-6 col-lg-4" style="padding-bottom: 5px">
                                 <div class="card">
-                                    <h:graphicImage url="#{product.imageURL}" alt="#{product.name}" styleClass="card-img-top"/>
+                                    <h:form><h:commandLink action ="#{productBean.showProductDetail(product)}">
+                                        <h:graphicImage url="#{product.imageURL}" alt="#{product.name}" styleClass="card-img-top"/>
+                                    </h:commandLink>
+                                    </h:form>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <h:commandButton value = "#{product.name}">
-                                                <f:ajax event="click" listener="#{productBean.productDetail}"/>
-                                            </h:commandButton>
+                                            <h:form>
+                                                <h:commandLink value = "#{product.name}" action ="#{productBean.showProductDetail(product)}"/>
+                                            </h:form>
                                         </h4>
                                         <p class="card-text">
                                             <h:outputText value="#{product.description}"/>
@@ -82,7 +84,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </ui:repeat>
                         <div class="col-12">

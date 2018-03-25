@@ -42,13 +42,9 @@ public class ProductBean implements Serializable {
         this.productList = productList;
     }
     
-    public void productDetail(AjaxBehaviorEvent event) {
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("productDetail.xhtml?id=" + product.getId());
-        } catch (IOException ex) {
-            FacesMessage msg = new FacesMessage("IOException", product.getId());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
+    public String showProductDetail(Product product) {
+        this.product = product;
+        return "productDetail";
     }
     
     public String allProducts() {
