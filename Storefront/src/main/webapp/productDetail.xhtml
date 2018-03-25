@@ -58,7 +58,7 @@
                     <div class="card bg-light mb-3">
                         <div class="card-body">
                             <p class="product_title"><h:outputText value="#{productBean.product.name}"/></p>
-                            <p class="price">Starting at <h:outputText value="#{productBean.product.name}"/><f:convertNumber type="currency"/></p>
+                            <p class="price">Starting at $<h:outputText value="#{productBean.product.price}"/><f:convertNumber type="currency"/></p>
                             <form method="get" action="cart.jsp">
                                 <div class="form-group">
                                     <label for="sizes">Size</label>
