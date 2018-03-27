@@ -57,9 +57,10 @@
                         <ui:repeat value="#{productBean.productList}" var="product" varStatus="loop">
                             <div class="col-12 col-md-6 col-lg-4" style="padding-bottom: 5px">
                                 <div class="card">
-                                    <h:form><h:commandLink action ="#{productBean.showProductDetail(product)}">
-                                        <h:graphicImage url="#{product.imageURL}" alt="#{product.name}" styleClass="card-img-top"/>
-                                    </h:commandLink>
+                                    <h:form>
+                                        <h:commandLink action ="#{productBean.showProductDetail(product)}">
+                                            <h:graphicImage url="#{product.imageURL}" alt="#{product.name}" styleClass="card-img-top"/>
+                                        </h:commandLink>
                                     </h:form>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -79,7 +80,9 @@
                                                 </p>
                                             </div>
                                             <div class="col">
-                                                <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                                <h:form>
+                                                    <h:commandButton value="Add to Cart" actionListener="#{shoppingCartBean.addToCart(product)}" styleClass="btn btn-success btn-block"/>
+                                               </h:form>
                                             </div>
                                         </div>
                                     </div>
