@@ -14,7 +14,7 @@ public class CartService {
         ShoppingCart2 cart = contents.computeIfAbsent(sessionId,
                (String t) -> new ShoppingCart2());
        
-       return cart;
+       return contents.get(sessionId);
     }
     
     public void update(String sessionId, ShoppingCart2 cart) {

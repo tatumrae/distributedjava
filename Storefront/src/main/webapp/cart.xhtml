@@ -30,18 +30,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <ui:repeat value="#{shoppingCartBean.cartItems}" var="lineItem" varStatus="loop">
+                                <ui:repeat value="#{shoppingCartBean.productList}" var="lineItem" varStatus="loop">
                                     <tr>
-                                        <td><img src="#{lineItem.product.imageURL}" width="50px"/> </td>
-                                        <td>#{lineItem.product.name}</td>
-                                        <td>#{lineItem.qty}</td>
+                                        <td><img src="#{lineItem.imageURL}" width="50px"/> </td>
+                                        <td>#{lineItem.name}</td>
+                                        <td class="text-center">
+                                            <h:outputText value="#{shoppingCartBean.getQuantities(lineItem)}"/>
+                                        </td>
                                         <td class="text-right">
-                                            <h:outputText value="#{lineItem.product.price}">
+                                            <h:outputText value="#{lineItem.price}">
                                                 <f:convertNumber type="currency" />
                                             </h:outputText>
                                         </td>
                                         <td class="text-right">
-                                            <h:outputText value="#{lineItem.qty * lineItem.product.price}">
+                                            <h:outputText value="#{lineItem.price}">
                                                 <f:convertNumber type="currency" />
                                             </h:outputText>
                                         </td>
