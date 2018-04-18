@@ -8,7 +8,6 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
             <h:link value = "Succulent Center" outcome = "index" styleClass="navbar-brand"/>
-            <!--<a class="navbar-brand" href="index.jsp">Succulent Center</a>-->
             <button class="navbar-toggler" type="button"> <span
                     class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
@@ -24,16 +23,16 @@
                     </li>
                 </ul>
                 <h:form styleClass="form-inline my-2 my-lg-0" id="form">
-                                        
-                    <a class="btn btn-success btn-sm ml-3" href="cart"> <i
-                            class="fa fa-shopping-cart"></i> Cart <span
-                                class="badge badge-light">
-                                <p:outputLabel for="cartQuantity" value="Cart:" />
-                                <h:outputText id="cartQuantity" value="#{shoppingCartBean.itemsInCart}" />                                
-                            </span> </a>
-                    </h:form>
+
+                    <h:link outcome="#{shoppingCartBean.contents}" class="btn btn-success btn-sm ml-3"><i class="fa fa-shopping-cart"></i> Cart 
+                        <span class="badge badge-light">
+                            <p:outputLabel for="cartQuantity" value="" />
+                            <h:outputText id="cartQuantity" value="#{shoppingCartBean.itemsInCart}" />                                
+                        </span>
+                    </h:link>
+
+                </h:form>
             </div>
         </div>
     </nav>
 </ui:composition>
-

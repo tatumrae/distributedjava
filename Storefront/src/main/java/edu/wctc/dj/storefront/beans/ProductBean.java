@@ -47,8 +47,9 @@ public class ProductBean implements Serializable {
         return "productDetail";
     }
     
-    public String allProducts() {
+    public String allProducts() throws Exception {
         productList = productService.getAllProducts();
         return "productList";
     }
+    
 }
