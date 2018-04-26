@@ -1,12 +1,18 @@
-package edu.wctc.dj.storefront.model;
+package edu.wctc.dj.storefront.services;
 
+import edu.wctc.dj.storefront.model.ShoppingCart2;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Tatum Thomas
  */
+
+@Service
+@Transactional
 public class CartService {
     private static final Map<String, ShoppingCart2> contents = new HashMap<>();
     

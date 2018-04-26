@@ -1,17 +1,30 @@
 package edu.wctc.dj.storefront.model;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author Tatum Thomas
  */
+
+@Entity
 public class Product {
+    
+    @Id
+    @GeneratedValue
     private String id;
+    
+    
     private String name;
     private String imageURL;
     private String description;
     private double price;
+
+    public Product() {
+    }
 
     public Product(String id, String name, String imageURL, String description, double price) {
         this.id = id;

@@ -5,26 +5,23 @@
  */
 package edu.wctc.dj.storefront.beans;
 
-import edu.wctc.dj.storefront.model.CartService;
-import edu.wctc.dj.storefront.model.LineItem;
+import edu.wctc.dj.storefront.services.CartService;
 import edu.wctc.dj.storefront.model.Product;
-import edu.wctc.dj.storefront.model.ProductService;
 import edu.wctc.dj.storefront.model.ShoppingCart2;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 
 /**
  *
  * @author tatum
  */
-@Named(value = "shoppingCartBean")
-@SessionScoped
+@Component("shoppingCartBean")
+@Scope("session")
 public class ShoppingCartBean implements Serializable {
 
     private final String sessionId;
