@@ -22,7 +22,7 @@ public class ProductService {
     @Autowired
     private IProductDAO productDao;
 
-    public Product getProduct(String id) throws Exception {
+    public Product getProduct(String id) {
         return productDao.getOne(id);
     }
 
@@ -36,5 +36,17 @@ public class ProductService {
         Product product = new Product();
         product.setName(query);
         return productDao.findAll(Example.of(product, matcher));
+    }
+    
+    public Product createProduct(Product product) {
+        return productDao.save(product);
+    }
+    
+    public Product updateProduct(Product product) {
+        return productDao.save(product);
+    }
+    
+    public void deleteProduct(String id) {
+        productDao.deleteById(id);
     }
 }
