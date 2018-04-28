@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="header.xhtml" />
+        <title>Succulent Center | The Source for Succulents</title>
+    </h:head>
+    <h:body>
+        <ui:include src="navigation.xhtml" />
+        <div class="container jumbotron text-center">
+            <h1 class="jumbotron-heading">
+                SUCCULENT CATEGORIES
+            </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="category.jsp">Category</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sub-category</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-3">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+                        <ul class="list-group category_block">
+                            <li class="list-group-item"><a href="category.jsp">Echeverias</a></li>
+                            <li class="list-group-item"><a href="category.jsp">Sedums</a></li>
+                            <li class="list-group-item"><a href="category.jsp">Agaves &amp; Aloes</a></li>
+                            <li class="list-group-item"><a href="category.jsp">Cuttings</a></li>
+                            <li class="list-group-item"><a href="category.jsp">Assorted Varieties</a></li>
+                        </ul>
+                    </div>
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-success text-white text-uppercase">Latest product</div>
+                        <div class="card-body">
+                            <img class="img-fluid" src="images/Zebra_Haworthia_600_400.jpg" />
+                            <h5 class="card-title">Zebra Haworthia</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="bloc_left_price">$1.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <ui:repeat value="#{productBean.productList}" var="product" varStatus="loop">
+                            <div class="col-12 col-md-6 col-lg-4" style="padding-bottom: 5px">
+                                <div class="card">
+                                    <h:form>
+                                        <h:commandLink action ="#{productBean.showProductDetail(product)}">
+                                            <h:graphicImage url="#{product.imageURL}" alt="#{product.name}" styleClass="card-img-top"/>
+                                        </h:commandLink>
+                                    </h:form>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:form>
+                                                <h:commandLink value = "#{product.name}" action ="#{productBean.showProductDetail(product)}"/>
+                                            </h:form>
+                                        </h4>
+                                        <p class="card-text">
+                                            <h:outputText value="#{product.description}"/>
+                                        </p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="btn btn-danger btn-block">
+                                                    <h:outputText value="#{product.price}">
+                                                        <f:convertNumber type="currency"/>
+                                                    </h:outputText>
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <h:form>
+                                                    <h:commandButton value="Add to Cart" actionListener="#{shoppingCartBean.addToCart(product)}" styleClass="btn btn-success btn-block"/>
+                                               </h:form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                        <div class="col-12">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <ui:include src="footer.xhtml" />
+    </h:body>
+</html>
+

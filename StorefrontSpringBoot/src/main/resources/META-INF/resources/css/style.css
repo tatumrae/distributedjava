@@ -1,0 +1,72 @@
+/*
+** Style Simple Ecommerce Theme for Bootstrap 4
+** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+*/
+.footer {
+    background: #f7f7f9;
+    padding: 40px;
+}
+.bloc_left_price {
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
+.category_block li:hover {
+    background-color: #007bff;
+}
+.category_block li:hover a {
+    color: #ffffff;
+}
+.category_block li a {
+    color: #888;
+}
+.add_to_cart_block .price {
+    color: #FF7851;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-bottom: 0;
+}
+.add_to_cart_block .price_discounted {
+    color: #f7f7f9;
+    text-align: center;
+    text-decoration: line-through;
+    font-size: 140%;
+}
+.product_rassurance {
+    padding: 10px;
+    margin-top: 15px;
+    background: #ffffff;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+.product_rassurance .list-inline li:hover {
+    color: #f7f7f9;
+}
+.reviews_product .fa-star {
+    color: gold;
+}
+.pagination {
+    margin-top: 20px;
+}
+footer {
+    background: #f7f7f9;
+    padding: 40px;
+}
+footer a {
+    color: #888!important
+}
+.text-light {
+    color: #888 !important;
+}
+.jumbotron {
+    padding: 1.75rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #f7f7f9;
+    border-radius: 0.6rem;
+}

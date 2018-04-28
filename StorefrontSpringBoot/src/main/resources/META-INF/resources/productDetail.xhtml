@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="header.xhtml" />
+        <title>Succulent Center | The Source for Succulents</title>
+    </h:head>
+    <h:body>
+        <ui:include src="navigation.xhtml" />
+        
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading"><h:outputText value="#{productBean.product.name}"/></h1>
+                <!--<p class="lead text-muted mb-0">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500...</p>-->
+            </div>
+        </section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"/><h:link value = "Home" outcome = "index" styleClass="breadcrumb-item"/>
+<!--                            <li class="breadcrumb-item"><a href="productList.jsp">Category</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Product</li>-->
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <!-- Image -->
+                <div class="col-12 col-lg-6">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <a href="" data-toggle="modal" data-target="#productModal">
+                                <h:graphicImage url="#{productBean.product.imageURL}" alt="#{productBean.product.name}" width="100%"/>
+                                <p class="text-center">Zoom</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add to cart -->
+                <div class="col-12 col-lg-6 add_to_cart_block">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-align-justify"></i> Description</div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <h:outputText value="#{productBean.product.description}"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <p class="product_title"><h:outputText value="#{productBean.product.name}"/></p>
+                            <p class="price">Starting at $<h:outputText value="#{productBean.product.price}"/><f:convertNumber type="currency"/></p>
+                            <form method="get" action="cart.jsp">
+                                <div class="form-group">
+                                    <label for="sizes">Size</label>
+                                    <select class="custom-select" id="sizes">
+                                        <option selected="selected">Select</option>
+                                        <option value="1">2"</option>
+                                        <option value="2">3.5"</option>
+                                        <option value="3">1 Gallon</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity :</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button type="button" class="quantity-left-minus btn btn-danger btn-number"  data-type="minus" data-field="">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" class="form-control"  id="quantity" name="quantity" min="1" max="100" value="1"/>
+                                        <div class="input-group-append">
+                                            <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="cart.jsp" class="btn btn-success btn-lg btn-block text-uppercase">
+                                    <i class="fa fa-shopping-cart"></i> Add To Cart
+                                </a>
+                            </form>
+                            <div class="reviews_product p-3 mb-2 ">
+                                3 reviews
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                (4/5)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal image -->
+        <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">Product title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="img-fluid" src="https://dummyimage.com/1200x1200/55595c/fff" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ui:include src="footer.xhtml"/> 
+    </h:body>
+</html>

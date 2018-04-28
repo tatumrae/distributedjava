@@ -1,0 +1,38 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <h:link value = "Succulent Center" outcome = "index" styleClass="navbar-brand"/>
+            <button class="navbar-toggler" type="button"> <span
+                    class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item active">
+                        <h:link value = "Home" outcome = "index" styleClass="nav-link"/>
+                    </li>
+                    <li class="nav-item">
+                        <h:link value = "Products" outcome = "#{productBean.allProducts()}" styleClass="nav-link"/>
+                    </li>
+                    <li class="nav-item">
+                        <h:link value = "Cart" outcome = "cart.xhtml" styleClass="nav-link"/>
+                    </li>
+                </ul>
+                <h:form styleClass="form-inline my-2 my-lg-0" id="form">
+
+                    <h:link outcome="#{shoppingCartBean.contents}" class="btn btn-success btn-sm ml-3"><i class="fa fa-shopping-cart"></i> Cart 
+                        <span class="badge badge-light">
+                            <p:outputLabel for="cartQuantity" value="" />
+                            <h:outputText id="cartQuantity" value="#{shoppingCartBean.itemsInCart}" />                                
+                        </span>
+                    </h:link>
+
+                </h:form>
+            </div>
+        </div>
+    </nav>
+</ui:composition>
