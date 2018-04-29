@@ -80,9 +80,13 @@
                                                 </p>
                                             </div>
                                             <div class="col">
-                                                <h:form>
-                                                    <h:commandButton value="Add to Cart" actionListener="#{shoppingCartBean.addToCart(product)}" styleClass="btn btn-success btn-block"/>
-                                               </h:form>
+                                                <h:form id="cartSubmissionForm">
+                                                    <p:commandButton value="Add to Cart" 
+                                                                     ajax="true" 
+                                                                     styleClass="btn btn-success btn-block" 
+                                                                     update=":navCart:cartQuantity" 
+                                                                     actionListener="#{shoppingCartBean.addToCart(product)}"/>
+                                                </h:form>
                                             </div>
                                         </div>
                                     </div>

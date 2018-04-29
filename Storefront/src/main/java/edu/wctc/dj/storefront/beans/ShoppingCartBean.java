@@ -6,18 +6,13 @@
 package edu.wctc.dj.storefront.beans;
 
 import edu.wctc.dj.storefront.model.CartService;
-import edu.wctc.dj.storefront.model.LineItem;
 import edu.wctc.dj.storefront.model.Product;
-import edu.wctc.dj.storefront.model.ProductService;
-import edu.wctc.dj.storefront.model.ShoppingCart;
 import edu.wctc.dj.storefront.model.ShoppingCart2;
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.faces.context.FacesContext;
 
 /**
@@ -45,8 +40,8 @@ public class ShoppingCartBean implements Serializable {
 //    );
     public ShoppingCartBean() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        sessionId = facesContext.getExternalContext().getSessionId(true);
-        cart = shoppingCartService.getContents(sessionId);
+            sessionId = facesContext.getExternalContext().getSessionId(true);
+            cart = shoppingCartService.getContents(sessionId);
     }
 
     public int getItemsInCart() {

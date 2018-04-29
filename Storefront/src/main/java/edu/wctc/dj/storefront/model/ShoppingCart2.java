@@ -10,17 +10,13 @@ import java.util.List;
  */
 public class ShoppingCart2 implements Serializable {
 
-    private List<Product> contents = new ArrayList<>();
+    private final List<Product> contents = new ArrayList<>();
 
     public ShoppingCart2() {
     }
 
     public List<Product> getContents() {
         return contents;
-    }
-
-    public void setContents(List<Product> contents) {
-        this.contents = contents;
     }
 
     public int getItemsInCart() {
